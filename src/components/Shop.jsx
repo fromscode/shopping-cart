@@ -1,24 +1,31 @@
 import { useOutletContext } from "react-router";
 
 export default function Shop() {
-  const [data, loading, error] = useOutletContext();
+  const [data, loading, error, cartObj, setCartObj] = useOutletContext();
 
   if (loading) return <div>Loading</div>;
 
   if (error) return <div>Error</div>;
 
-  console.log(data);
-
   return (
     <div className="shop">
       {data.map((item) => (
-        <Card key={item.id} item={item}></Card>
+        <Card
+          key={item.id}
+          item={item}
+          cartObj={cartObj}
+          setCartObj={setCartObj}
+        ></Card>
       ))}
     </div>
   );
 }
 
-function Card({ item }) {
+function Card({ item, cartObj, setCartObj }) {
+  function handleClick(itemId) {
+    setCartObj(cartObj.nAddItem(itemId));
+  }
+
   return (
     <div className="card">
       <img
@@ -31,7 +38,9 @@ function Card({ item }) {
       <p>
         Ratings: {item.rating.rate} ({item.rating.count})
       </p>
-      <button type="button">Add to cart</button>
+      <button type="button" onClick={() => handleClick(item.id)}>
+        Add to cart
+      </button>
     </div>
   );
 }
