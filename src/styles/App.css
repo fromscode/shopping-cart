@@ -34,6 +34,7 @@ nav {
   height: 120px;
   position: sticky;
   top: 0px;
+  z-index: 1;
 }
 
 nav > .links {
@@ -56,4 +57,35 @@ nav h1 {
   color: red;
   border-radius: 50%;
   font-weight: 600;
+}
+
+/* Styles for carousel */
+
+.wide-container {
+  transition: 0.3s ease;
+  display: flex;
+  justify-content: center;
+}
+
+.wide-container img {
+  height: 125px;
+  width: 150px;
+}
+
+.frame {
+  box-sizing: content-box;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 125px;
+  width: 150px;
+  background-color: grey;
+}
+
+.frame-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

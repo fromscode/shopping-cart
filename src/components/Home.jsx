@@ -1,9 +1,75 @@
+import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router";
+
 export default function Home() {
+  const [data, loading, error] = useOutletContext();
+
   return (
     <>
       <Hero />
+      <Carousel data={data} loading={loading} error={error} />
       <AboutUs></AboutUs>
       <Motivation></Motivation>
+    </>
+  );
+}
+
+function Carousel({ data, loading, error }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (data) {
+      const id = setTimeout(() => {
+        setIndex((prev) => (prev === data.length - 1 ? 0 : prev + 1));
+        console.log("rest");
+      }, 500);
+
+      return () => clearTimeout(id);
+    }
+  }, [data]);
+
+  if (loading || error) return <>Nothing</>;
+
+  const start = 75 * (data.length - 1);
+  const step = 75 * 2;
+
+  const imgArr = data.map((item) => item.image);
+  const xArr = Array.from({ length: data.length }, (_, i) => start - i * step);
+
+  return (
+    <>
+      <div className="frame-container">
+        <button
+          type="button"
+          id="prev-btn"
+          onClick={() => {
+            const newIndex = index === 0 ? xArr.length - 1 : index - 1;
+            setIndex(newIndex);
+          }}
+        >
+          &lt;
+        </button>
+        <div className="frame">
+          <div
+            className="wide-container"
+            style={{ translate: xArr[index] + "px" }}
+          >
+            {imgArr.map((link, index) => (
+              <img key={index} src={link}></img>
+            ))}
+          </div>
+        </div>
+        <button
+          type="button"
+          id="next-btn"
+          onClick={() => {
+            const newIndex = index === xArr.length - 1 ? 0 : index + 1;
+            setIndex(newIndex);
+          }}
+        >
+          &gt;
+        </button>
+      </div>
     </>
   );
 }
