@@ -1,7 +1,7 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
   text-align: center;
+  min-height: 100vh;
+  width: 100vw;
 }
 
 .shop {
@@ -18,4 +18,42 @@
 .card img {
   height: 125px;
   width: 150px;
+}
+
+main,
+nav {
+  padding: 0 50px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+  height: 120px;
+  position: sticky;
+  top: 0px;
+}
+
+nav > .links {
+  margin-left: auto;
+}
+
+nav a {
+  color: red;
+  font-size: 2rem;
+  margin: 0 20px;
+  font-weight: 700;
+}
+
+nav h1 {
+  letter-spacing: -4px;
+  font-weight: 700;
+}
+
+.trademark {
+  color: red;
+  border-radius: 50%;
+  font-weight: 600;
 }

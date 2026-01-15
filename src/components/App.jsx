@@ -12,7 +12,9 @@ function App() {
   return (
     <>
       <Navbar cartCount={cartObj.count} />
-      <Outlet context={[data, loading, error, cartObj, setCartObj]} />
+      <main>
+        <Outlet context={[data, loading, error, cartObj, setCartObj]} />
+      </main>
     </>
   );
 }
