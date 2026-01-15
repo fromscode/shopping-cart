@@ -19,12 +19,12 @@ function Carousel({ data, loading, error }) {
 
   useEffect(() => {
     if (data) {
-      const id = setTimeout(() => {
+      const id = setInterval(() => {
         setIndex((prev) => (prev === data.length - 1 ? 0 : prev + 1));
         console.log("rest");
-      }, 500);
+      }, 1500);
 
-      return () => clearTimeout(id);
+      return () => clearInterval(id);
     }
   }, [data]);
 
