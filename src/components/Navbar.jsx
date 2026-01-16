@@ -4,7 +4,7 @@ export default function Navbar({ cartCount }) {
   return (
     <>
       <nav>
-        <h1>
+        <h1 className="logo">
           Shopping Cart<span className="trademark">&trade;</span>
         </h1>
 
