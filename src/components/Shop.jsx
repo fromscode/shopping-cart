@@ -1,11 +1,22 @@
 import { useOutletContext } from "react-router";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function Shop() {
   const [data, loading, error, cartObj, setCartObj] = useOutletContext();
 
-  if (loading) return <div>Loading</div>;
+  if (loading)
+    return (
+      <div className="shop">
+        <LoadingSpinner />
+      </div>
+    );
 
-  if (error) return <div>Error</div>;
+  if (error)
+    return (
+      <div className="shop">
+        <span className="error">Network Error</span>
+      </div>
+    );
 
   return (
     <div className="shop">
