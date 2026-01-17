@@ -45,32 +45,43 @@ function Card({ item, cartObj, setCartObj }) {
       />
       <h3 className="image-title">{item.title}</h3>
       <p>
-        Ratings: {item.rating.rate} ({item.rating.count})
+        {item.rating.rate}
+        <span className="star">&#9733;</span> ({item.rating.count} ratings)
       </p>
-      <div className="price">{item.price}</div>
-      <button type="button" onClick={() => setQty((qty) => qty + 1)}>
-        +
-      </button>
-      <input
-        type="number"
-        name="number"
-        value={qty}
-        min={1}
-        onChange={(e) => setQty(Number(e.target.value))}
-      />
-      <button
-        type="button"
-        onClick={() => setQty((qty) => (qty == 1 ? 1 : qty - 1))}
-      >
-        -
-      </button>
-      <button
-        type="button"
-        className="add-btn"
-        onClick={() => handleClick(item.id)}
-      >
-        Add to cart
-      </button>
+      <div className="qty">
+        <div className="quantity">Quantity</div>
+        <button
+          type="button"
+          className="plus-btn"
+          onClick={() => setQty((qty) => qty + 1)}
+        >
+          +
+        </button>
+        <input
+          type="number"
+          name="number"
+          value={qty}
+          min={1}
+          onChange={(e) => setQty(Number(e.target.value))}
+        />
+        <button
+          type="button"
+          className="minus-btn"
+          onClick={() => setQty((qty) => (qty <= 1 ? 1 : qty - 1))}
+        >
+          -
+        </button>
+      </div>
+      <div className="card-bottom">
+        <div className="price">${item.price.toFixed(2)}</div>
+        <button
+          type="button"
+          className="add-btn"
+          onClick={() => handleClick(item.id)}
+        >
+          Add to cart
+        </button>
+      </div>
     </div>
   );
 }

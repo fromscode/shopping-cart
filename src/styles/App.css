@@ -241,6 +241,11 @@ em {
   margin-bottom: 20px;
 }
 
+.card > * {
+  margin: 0;
+  font-weight: 700;
+}
+
 .image-title {
   font-weight: 900;
 }
@@ -268,4 +273,23 @@ input[type="number"] {
 input {
   font-family: inherit;
   font-weight: 900;
+  width: 30px;
+  text-align: right;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+}
+
+.plus-btn,
+.minus-btn {
+  padding: 0px 10px;
+  background-color: silver;
+  margin: 0px 10px;
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
 }
