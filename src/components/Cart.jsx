@@ -8,9 +8,10 @@ export default function Cart() {
   const cards = [];
 
   for (const entry of cartObj.map.entries()) {
+    const item = data[entry[0] - 1];
     cards.push(
-      <div>
-        {data[entry[0] + 1].title}
+      <div key={item.id}>
+        {item.title}
         Quantity: {entry[1]}
         <button
           type="button"

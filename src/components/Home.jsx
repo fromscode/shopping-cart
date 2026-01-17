@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router";
+import { Link, useOutletContext } from "react-router";
 import LoadingSpinner from "./LoadingSpinner";
 
 export default function Home() {
@@ -53,7 +53,7 @@ function Carousel({ data, loading, error }) {
         >
           &lt;
         </button>
-        <div className="frame">
+        <Link to="/shop" className="frame">
           <div
             className="wide-container"
             style={{ translate: xArr[index] + "px" }}
@@ -62,7 +62,7 @@ function Carousel({ data, loading, error }) {
               <img key={index} src={link}></img>
             ))}
           </div>
-        </div>
+        </Link>
         <button
           type="button"
           id="next-btn"
@@ -107,7 +107,9 @@ function ErrorCarousel() {
         </button>
         <div className="frame">
           <div className="wide-container" style={{}}>
-            <span className="error">Network Error</span>
+            <div className="error">
+              Network Error <div>(check console for details)</div>
+            </div>
           </div>
         </div>
         <button type="button" id="next-btn">
