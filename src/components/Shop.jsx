@@ -44,10 +44,10 @@ function Card({ item, cartObj, setCartObj }) {
         width={"auto"}
       />
       <h3 className="image-title">{item.title}</h3>
-      <p>
+      <div className="ratings">
         {item.rating.rate}
         <span className="star">&#9733;</span> ({item.rating.count} ratings)
-      </p>
+      </div>
       <div className="qty">
         <div className="quantity">Quantity</div>
         <button
