@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router";
 import LoadingSpinner from "./LoadingSpinner";
 
 export default function Home() {
-  const [data, loading, error] = useOutletContext();
+  const [data, loading, error, _, __, index, setIndex] = useOutletContext();
 
   return (
     <>
       <section className="hero-section">
         <Hero />
-        <Carousel data={data} loading={loading} error={error} />
+        <Carousel
+          data={data}
+          loading={loading}
+          error={error}
+          index={index}
+          setIndex={setIndex}
+        />
       </section>
       <AboutUs></AboutUs>
       <Motivation></Motivation>
@@ -17,19 +22,7 @@ export default function Home() {
   );
 }
 
-function Carousel({ data, loading, error }) {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    if (data) {
-      const id = setInterval(() => {
-        setIndex((prev) => (prev === data.length - 1 ? 0 : prev + 1));
-      }, 3000);
-
-      return () => clearInterval(id);
-    }
-  }, [data]);
-
+function Carousel({ data, loading, error, index, setIndex }) {
   if (loading) return <LoadingCarousel />;
 
   if (error) return <ErrorCarousel />;
